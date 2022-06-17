@@ -1,6 +1,17 @@
-const { projects, clients} = require('../sampleData.js')
+// const { projects, clients} = require('../sampleData.js')  *sample data
 
-const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLSchema, GraphQLList } = require('graphql');
+//Mongoose Models                                         * database data
+const Project = require('../models/Project');
+const Client = require('../models/Client');
+
+const { 
+    GraphQLObjectType, 
+    GraphQLID, 
+    GraphQLString, 
+    GraphQLSchema, 
+    GraphQLList 
+} = require('graphql');
+
 
 //Client Type
 const ClientType = new GraphQLObjectType({
@@ -24,7 +35,7 @@ const ProjectType = new GraphQLObjectType({
         client: {
             type: ClientType,
             resolve(parent, args){
-                return clients.find(client => client.id === parent.clientId);
+                return client.findById(parent.clientId);
             }
         }
     })
@@ -36,7 +47,7 @@ const RootQuery = new GraphQLObjectType({
         clients: {
             type: new GraphQLList(ClientType),
             resolve(parent, args){
-                return clients;
+                return Client.find();
             }
         },
         client: {
@@ -46,13 +57,13 @@ const RootQuery = new GraphQLObjectType({
             // `sampledata`からClientをゲットするため、keyとして上記の引数`id`を指定
             resolve(parent, args) {
                 //code to get data from db/other source -> e.g: clients from sampleData.js
-                return clients.find(client => client.id === args.id)
+                return client.findById(args.id)
             }
         },
         projects: {
             type: new GraphQLList(ProjectType),
             resolve(parent, args){
-                return projects;
+                return Project.find();
             }
         },
         project: {
@@ -60,12 +71,14 @@ const RootQuery = new GraphQLObjectType({
             args: { id: {type: GraphQLID}},
             resolve(parent, args) {
                 //code to get data from db/other source -> e.g: clients from sampleData.js
-                return projects.find(project => project.id === args.id)
+                return project.findById(args.id)
             }
         }
     }
 });
 
+
 module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    //mutation
 })
