@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); // ODM library
 
 const connectDB = async () =>{
     const conn = await mongoose.connect(process.env.MONGO_URI);
