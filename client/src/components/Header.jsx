@@ -1,8 +1,17 @@
+import logo from './assets/logo.png'
+
 const Header = () => {
     return ( 
-        <div className="header">
-            header
-        </div>
+        <nav className='navbar bg-light mb-4 p-0'>
+            <div className="container">
+                <a href="/" className="navbar-brand">
+                    <div className="d-flex">
+                        <img src={logo} alt="" className="mr-2" />
+                        <div>Project MGMT</div>
+                    </div>
+                </a>
+            </div>
+        </nav>
      );
 }
  
