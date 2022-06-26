@@ -1,4 +1,5 @@
 const ProjectCard = ({project}) => {
+    console.log(project)
     return ( 
         <div className="col-md-4 mt-5">
             <div className="card">
