@@ -1,4 +1,4 @@
-## GraphQL Crash Course With Full Stack MERN Project
+## GraphQL Crash Course With Full Stack MERN Project 🔥
 
 ### Project Mgmt App
 Project management app from [GraphQL crash course](https://www.youtube.com/watch?v=BcLNfwF04Kw) on YouTube
@@ -8,6 +8,8 @@ Project management app from [GraphQL crash course](https://www.youtube.com/watch
 
 
 ### Script on Server
+
+> setting for MongoDB Atlas is neccesary first before running a script to connect to the database 
 
 ``` 
 npm run dev 
